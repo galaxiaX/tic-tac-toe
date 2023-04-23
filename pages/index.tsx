@@ -1,4 +1,5 @@
 import axios from "axios";
+import Head from "next/head";
 import { useState } from "react";
 import Swal from "sweetalert2";
 
@@ -105,17 +106,22 @@ const Home = () => {
   };
 
   return (
-    <div className="content">
-      <h1>Tic Tac Toe</h1>
-      <div className="board">
-        {board.map((cell, index) => (
-          <div key={index} onClick={() => handleClick(index)}>
-            {cell}
-          </div>
-        ))}
+    <>
+      <Head>
+        <title>Tic Tac Toe</title>
+      </Head>
+      <div className="content">
+        <h1>Tic Tac Toe</h1>
+        <div className="board">
+          {board.map((cell, index) => (
+            <div key={index} onClick={() => handleClick(index)}>
+              {cell}
+            </div>
+          ))}
+        </div>
+        <button onClick={handleReset}>Reset Board</button>
       </div>
-      <button onClick={handleReset}>Reset Board</button>
-    </div>
+    </>
   );
 };
 
